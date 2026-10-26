@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --ink: #1b2733; --muted: #4a5a6a; --line: #c9d6e3;
+    --accent: #1f4e79; --accent-ink: #ffffff; --field: #f6f9fc; --bad: #b42318;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16202a; --ink: #e6edf3; --muted: #9aabbb; --line: #2c3a48;
+      --accent: #7fb2e5; --accent-ink: #0e1a26; --field: #1d2935; --bad: #f97066; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; width: 300px; background: var(--bg); color: var(--ink);
+    font: 13px/1.45 "Segoe UI", system-ui, sans-serif; }
+  main { padding: 14px 16px 16px; border-top: 4px solid var(--accent); }
+  h1 { margin: 0 0 2px; font-size: 16px; font-weight: 600; }
+  .lead { margin: 0 0 14px; color: var(--muted); }
+  label { display: block; margin-bottom: 4px; font-weight: 600; }
+  textarea { width: 100%; height: 96px; resize: vertical; padding: 8px 10px; border: 1px solid var(--line);
+    border-radius: 4px; background: var(--field); color: var(--ink);
+    font: 13px/1.5 Consolas, "Cascadia Mono", monospace; text-transform: uppercase; }
+  textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hint { margin: 4px 0 12px; color: var(--muted); font-size: 12px; }
+  button { width: 100%; padding: 8px 12px; border: 0; border-radius: 4px; background: var(--accent);
+    color: var(--accent-ink); font: 600 13px "Segoe UI", system-ui, sans-serif; cursor: pointer; }
+  button:disabled { opacity: .55; cursor: default; }
+  #status { min-height: 18px; margin: 10px 0 0; color: var(--muted); }
+  #status.bad { color: var(--bad); }
+</style>
+</head>
+<body>
+<main>
+  <h1>FMS Reconcile</h1>
+  <p class="lead">Xuất tracking, TO, dest của LT Trip ra Excel.</p>
+  <label for="lt">Mã LT Trip</label>
+  <textarea id="lt" spellcheck="false" placeholder="LT0QAL50WHBV5"></textarea>
+  <p class="hint">Mỗi dòng 1 mã, mỗi trip ra 1 file. Ctrl+Enter để xuất.</p>
+  <button id="go" type="button">Xuất Excel</button>
+  <p id="status" role="status"></p>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>
